@@ -64,7 +64,9 @@ upload/
 bitrix/templates/landing24/
 bitrix/templates/learning/
 
-local/templates/main/node_modules/
-local/templates/main/package-lock.json/
-local/templates/main/build/
-local/templates/main/src/
+local/templates/main/node_modules
+local/templates/main/package-lock.json
+local/templates/main/build
+local/templates/main/src
+
+local/templates/main/node_modules
