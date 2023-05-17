@@ -13,10 +13,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          php-version: '7.4' # Укажите версию PHP, необходимую для вашего проекта
+          node-version: '16' 
 
       - name: Install Composer dependencies
         run: composer install --no-dev --optimize-autoloader
@@ -33,4 +33,4 @@ jobs:
       - name: Run Bitrix unit tests
         run: php -f bitrix/phpunit.php --verbose
 
-      # Добавьте здесь любые другие шаги, необходимые для вашего проекта
+ 
