@@ -3,6 +3,10 @@ stages:
   
 on: push
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
 .in-docker-job:
   tags:
     - docker
