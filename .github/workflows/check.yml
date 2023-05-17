@@ -1,42 +1,36 @@
-name: PHPUnit
-on: [push]
+name: Bitrix Project CI
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  PHPUnit:
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        PHP: ["7.4", "8.0", "8.1", "8.2"]
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_HOST: 127.0.0.1
-          MYSQL_DATABASE: bitrix-ci
-          MYSQL_USER: bitrix-ci
-          MYSQL_PASSWORD: bitrix-ci
-          MYSQL_RANDOM_ROOT_PASSWORD: "yes"
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-    env:
-      MYSQL_HOST: 127.0.0.1
-      MYSQL_DATABASE: bitrix-ci
-      MYSQL_USER: bitrix-ci
-      MYSQL_PASSWORD: bitrix-ci
-      DEBUG: true
+
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v1
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.PHP }}
-          tools: composer
-          ini-values: short_open_tag=1, mbstring.func_overload=2
+          php-version: '7.4' # Укажите версию PHP, необходимую для вашего проекта
 
-      - name: Install dependencies
-        run: composer install --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader
 
-      - name: Run PHPUnit tests
-        run: php vendor/bin/phpunit
+      - name: Copy Bitrix settings
+        run: cp -R .settings.php.settings.php
+
+      - name: Copy Bitrix configuration
+        run: cp -R bitrix/.settings_extra.php.settings_extra.php
+
+      - name: Set up Bitrix environment
+        run: php -f bitrix/modules/main/tools/fix_kernel.php --ts=2015-07-01T00:00:00
+
+      - name: Run Bitrix unit tests
+        run: php -f bitrix/phpunit.php --verbose
+
+      # Добавьте здесь любые другие шаги, необходимые для вашего проекта
