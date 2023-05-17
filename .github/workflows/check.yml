@@ -1,64 +1,42 @@
-stages:
-  - test
-  
-on: push
-
+name: PHPUnit
+on: [push]
 jobs:
-  build:
+  PHPUnit:
     runs-on: ubuntu-latest
-    
-      steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-    
-.in-docker-job:
-  tags:
-    - docker
-  image: alpine
+    strategy:
+      matrix:
+        PHP: ["7.4", "8.0", "8.1", "8.2"]
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_DATABASE: bitrix-ci
+          MYSQL_USER: bitrix-ci
+          MYSQL_PASSWORD: bitrix-ci
+          MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    env:
+      MYSQL_HOST: 127.0.0.1
+      MYSQL_DATABASE: bitrix-ci
+      MYSQL_USER: bitrix-ci
+      MYSQL_PASSWORD: bitrix-ci
+      DEBUG: true
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v1
 
-.php-job:
-  extends: .in-docker-job
-  image: spaceonfire/nginx-php-fpm:latest-7.2
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.PHP }}
+          tools: composer
+          ini-values: short_open_tag=1, mbstring.func_overload=2
 
-.composer-job:
-  extends: .php-job
-  before_script:
-    - composer install
-  cache:
-    paths:
-      - vendor
-      - $COMPOSER_CACHE_DIR
-  variables:
-    COMPOSER_CACHE_DIR: $CI_PROJECT_DIR/._composer-cache
+      - name: Install dependencies
+        run: composer install --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist
 
-##
-## "Test" stage jobs
-##
-
-codestyle:
-  extends: .composer-job
-  stage: test
-  script:
-    - composer codestyle -- --no-progress-bar --no-interaction
-
-phpstan:
-  extends: .composer-job
-  stage: test
-  script:
-    - composer dump-autoload --classmap-authoritative
-    - composer lint -- --no-interaction --no-progress
-
-phpunit:
-  extends: .composer-job
-  stage: test
-  script:
-    - docker-php-ext-enable xdebug
-    - composer test -- --no-interaction
-    - cat build/coverage.txt
-  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
-  artifacts:
-    paths:
-      - build/coverage/
-    reports:
-      junit: build/report.junit.xml
+      - name: Run PHPUnit tests
+        run: php vendor/bin/phpunit
