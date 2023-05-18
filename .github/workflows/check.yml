@@ -22,8 +22,6 @@ jobs:
           mysqli
           curl
           
-    - name: Install dependencies
-      run: composer install --no-interaction --prefer-dist
 
     - name: Configure Bitrix environment
       run: cp bitrix/.settings.php.example bitrix/.settings.php
