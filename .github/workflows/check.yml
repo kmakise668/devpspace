@@ -25,7 +25,7 @@ jobs:
       run: npm run prod  # Или другая команда для сборки вашего шаблона с помощью webpack
 
     - name: Copy local folder to temporary location
-      run: cp -r local/ /tmp/local
+      run: cp -r local/templates/main /tmp/local_templates_main
 
     - name: Configure Git
       run: |
@@ -38,7 +38,7 @@ jobs:
 
     - name: Commit changes
       run: |
-        git commit -m "Update local folder"
+        git commit -m "Update local/templates/main folder"
 
     - name: Push changes to GitHub
       uses: ad-m/github-push-action@master
