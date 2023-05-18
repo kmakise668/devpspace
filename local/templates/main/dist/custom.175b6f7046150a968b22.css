@@ -1,1 +1,15 @@
-b{font-weight:700}h1{font-size:5rem;color:red}body{background:violet;flex-direction:column;min-height:100vh;font-size:14px}
+b {
+    font-weight: 700
+}
+
+h1 {
+    font-size: 5rem;
+    color: aqua
+}
+
+body {
+    background: violet;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 14px
+}
