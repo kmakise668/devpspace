@@ -30,11 +30,6 @@ jobs:
     - name: Copy local folder to temporary location
       run: cp -r local/templates/main /tmp/local_templates_main
 
-    - name: Configure Git
-      run: |
-        git config --global user.name "kmakise668"
-        git config --global user.email "kmakise668@gmail.com"
-
     - name: Add changes to Git index
       run: |
         git add .
