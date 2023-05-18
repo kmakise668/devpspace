@@ -1,4 +1,4 @@
-name: Bitrix CI
+name: Deploy to Hosting
 
 on:
   push:
@@ -6,18 +6,45 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
       with:
-        php-version: '7.4'  # Версия PHP, используемая на вашем сервере Битрикс
-        extensions: |
-          bcmath
-          mysqli
-          curl
+        node-version: '14'  # Версия Node.js, необходимая для сборки вашего шаблона
+
+    - name: Install dependencies
+      run: npm i  # Или npm install, в зависимости от вашего проекта
+
+    - name: Build project
+      run: npm run prod  # Или другая команда для сборки вашего шаблона с помощью webpack
+
+    - name: Copy local folder to temporary location
+      run: cp -r local/ /tmp/local
+
+    - name: Configure Git
+      run: |
+        git config --global user.name "kmakise668"
+        git config --global user.email "kmakise668@gmail.com"
+
+    - name: Add changes to Git index
+      run: |
+        git add .
+
+    - name: Commit changes
+      run: |
+        git commit -m "Update local folder"
+
+    - name: Push changes to GitHub
+      uses: ad-m/github-push-action@main
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Deploy to Hosting
+      run: |
+        # Ваши команды для развертывания на хостинге
