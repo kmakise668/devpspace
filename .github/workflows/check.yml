@@ -12,27 +12,14 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
+ 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '14'  # Версия Node.js, необходимая для сборки вашего шаблона
 
-    - name: Copy local folder to temporary location
-      run: cp -r local/templates/main /tmp/local_templates_main
-      
-    - name: Configure Git
-      run: |
-        git config --global user.name "kmakise668"
-        git config --global user.email "kmakise668@gmail.com"
-
-    - name: Add changes to Git index
-      run: |
-        git add .
-
-    - name: Commit changes
-      run: |
-        git commit -m "Update"
+    - name: Install dependencies
+      run: npm install
 
     - name: Push changes to GitHub
       uses: ad-m/github-push-action@master
@@ -42,4 +29,4 @@ jobs:
     - name: Deploy to Hosting
       run: |
         npm install -g ftp-deploy
-        ftp-deploy --server 194.39.65.17 --user devpspa1 --password ~@KnCwYddcpro547 --local-dir . --remote-dir /httpdocs
+        npx ftp-deploy --server 194.39.65.17 --user devpspa1 --password ~@KnCwYddcpro547 --local-dir . --remote-dir /
