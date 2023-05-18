@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
+ 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
@@ -29,4 +29,4 @@ jobs:
     - name: Deploy to Hosting
       run: |
         npm install ftp-deploy
-        npx ftp-deploy --server 194.39.65.17 --user devpspa1 --password ~@KnCwYddcpro547 --local-dir . --remote-dir /httpdocs
+        npx ftp-deploy --server 194.39.65.17 --user devpspa1 --password ~@KnCwYddcpro547 --local-dir . --remote-dir /
