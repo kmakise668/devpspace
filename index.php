@@ -1,63 +1,68 @@
 <?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("title", "Демонстрационная версия продукта «1С-Битрикс: Управление сайтом»");
 $APPLICATION->SetPageProperty("NOT_SHOW_NAV_CHAIN", "Y");
 $APPLICATION->SetTitle("Каталог товаров из 1C:Предприятие");
 ?>
 
-<?$APPLICATION->IncludeComponent(
+<? $APPLICATION->IncludeComponent(
 	"bitrix:catalog.section.list",
 	"",
-	Array(
+	array(
 		"IBLOCK_TYPE" => "xmlcatalog",
 		"IBLOCK_ID" => "8",
-		"SECTION_ID" =>"",
+		"SECTION_ID" => "",
 		"SECTION_URL" => "/e-store/xml_catalog/#SECTION_ID#/",
 		"COUNT_ELEMENTS" => "Y",
 		"DISPLAY_PANEL" => "N",
 		"CACHE_TYPE" => "A",
 		"CACHE_TIME" => "3600"
 	)
-);?>
+); ?>
 <hr />
-
-<?$APPLICATION->IncludeComponent("bitrix:catalog.top", ".default", Array(
-	"IBLOCK_TYPE"	=>	"xmlcatalog",
-	"IBLOCK_ID"	=>	"8",
-	"ELEMENT_SORT_FIELD"	=>	"sort",
-	"ELEMENT_SORT_ORDER"	=>	"asc",
-	"ELEMENT_COUNT"	=>	"3",
-	"LINE_ELEMENT_COUNT"	=>	"1",
-	"PROPERTY_CODE"	=>	array(
-		1	=>	"CML2_ARTICLE",
-		2	=>	"CML2_BASE_UNIT",
-		3	=>	"CML2_TRAITS",
-		4	=>	"CML2_ATTRIBUTES",
-		5	=>	"CML2_BAR_CODE",
-	),
-	"SECTION_URL"	=>	"/e-store/xml_catalog/#SECTION_ID#/",
-	"DETAIL_URL"	=>	"/e-store/xml_catalog/#SECTION_ID#/#ELEMENT_ID#/",
-	"BASKET_URL"	=>	"/personal/cart/",
-	"ACTION_VARIABLE"	=>	"action",
-	"PRODUCT_ID_VARIABLE"	=>	"id",
-	"SECTION_ID_VARIABLE"	=>	"SECTION_ID",
-	"CACHE_TYPE"	=>	"A",
-	"CACHE_TIME"	=>	"3600",
-	"DISPLAY_COMPARE"	=>	"N",
-	"PRICE_CODE"	=>	array(
-		0	=>	"Розничная",
-	),
-	"USE_PRICE_COUNT"	=>	"N",
-	"SHOW_PRICE_COUNT"	=>	"1"
+<h2></h2>
+<h2>vEdit personal access token (classic)</h2>
+<h2></h2>
+<? $APPLICATION->IncludeComponent(
+	"bitrix:catalog.top",
+	".default",
+	array(
+		"IBLOCK_TYPE"	=>	"xmlcatalog",
+		"IBLOCK_ID"	=>	"8",
+		"ELEMENT_SORT_FIELD"	=>	"sort",
+		"ELEMENT_SORT_ORDER"	=>	"asc",
+		"ELEMENT_COUNT"	=>	"3",
+		"LINE_ELEMENT_COUNT"	=>	"1",
+		"PROPERTY_CODE"	=>	array(
+			1	=>	"CML2_ARTICLE",
+			2	=>	"CML2_BASE_UNIT",
+			3	=>	"CML2_TRAITS",
+			4	=>	"CML2_ATTRIBUTES",
+			5	=>	"CML2_BAR_CODE",
+		),
+		"SECTION_URL"	=>	"/e-store/xml_catalog/#SECTION_ID#/",
+		"DETAIL_URL"	=>	"/e-store/xml_catalog/#SECTION_ID#/#ELEMENT_ID#/",
+		"BASKET_URL"	=>	"/personal/cart/",
+		"ACTION_VARIABLE"	=>	"action",
+		"PRODUCT_ID_VARIABLE"	=>	"id",
+		"SECTION_ID_VARIABLE"	=>	"SECTION_ID",
+		"CACHE_TYPE"	=>	"A",
+		"CACHE_TIME"	=>	"3600",
+		"DISPLAY_COMPARE"	=>	"N",
+		"PRICE_CODE"	=>	array(
+			0	=>	"Розничная",
+		),
+		"USE_PRICE_COUNT"	=>	"N",
+		"SHOW_PRICE_COUNT"	=>	"1"
 	)
-);?>
+); ?>
 
 <h2>Видео-новости</h2>
 
-<?$APPLICATION->IncludeComponent(
+<? $APPLICATION->IncludeComponent(
 	"bitrix:player",
 	"",
-	Array(
+	array(
 		"PLAYER_TYPE" => "auto",
 		"USE_PLAYLIST" => "N",
 		"PATH" => "/upload/intro.flv",
@@ -87,14 +92,15 @@ $APPLICATION->SetTitle("Каталог товаров из 1C:Предприят
 		"BUFFER_LENGTH" => "10",
 		"DOWNLOAD_LINK_TARGET" => "_self"
 	),
-false
-);?>
+	false
+); ?>
 
-<!-- --><h2>Новые фотографии</h2>
-<?$APPLICATION->IncludeComponent(
+<!-- -->
+<h2>Новые фотографии</h2>
+<? $APPLICATION->IncludeComponent(
 	"bitrix:photogallery.detail.list",
 	".default",
-	Array(
+	array(
 		"IBLOCK_TYPE" => "photos",
 		"IBLOCK_ID" => "10",
 		"BEHAVIOUR" => "USER",
@@ -112,7 +118,7 @@ false
 		"CACHE_TIME" => "3600",
 		"PAGE_NAVIGATION_TEMPLATE" => "",
 		"USE_PERMISSIONS" => "N",
-		"GROUP_PERMISSIONS" => array(0=>"1",1=>"",),
+		"GROUP_PERMISSIONS" => array(0 => "1", 1 => "",),
 		"COMMENTS_TYPE" => "none",
 		"SET_TITLE" => "N",
 		"DATE_TIME_FORMAT" => "d.m.Y",
@@ -126,8 +132,8 @@ false
 		"SHOW_COMMENTS" => "N",
 		"SHOW_TAGS" => "N",
 		"MAX_VOTE" => "5",
-		"VOTE_NAMES" => array(0=>"1",1=>"2",2=>"3",3=>"4",4=>"5",5=>"",)
+		"VOTE_NAMES" => array(0 => "1", 1 => "2", 2 => "3", 3 => "4", 4 => "5", 5 => "",)
 	)
-);?><!-- -->
+); ?><!-- -->
 
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
