@@ -19,7 +19,7 @@ jobs:
         node-version: '14'  # Версия Node.js, необходимая для сборки вашего шаблона
 
     - name: Install dependencies
-      run: npm ci --prefix local/templates/main
+      run: npm i --prefix local/templates/main
 
     - name: Install webpack
       run: npm install --global webpack webpack-merge vue-loader
