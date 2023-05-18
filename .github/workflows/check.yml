@@ -22,7 +22,7 @@ jobs:
       run: npm i  # Или npm install, в зависимости от вашего проекта
       
     - name: Install webpack
-      run: npm install webpack webpack-merge
+      run: npm install webpack webpack-merge vue-loader
 
     - name: Build project
       run: npm run prod --prefix local/templates/main 
