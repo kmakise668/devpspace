@@ -47,3 +47,5 @@ jobs:
 
     - name: Deploy to Hosting
       run: |
+        npm install -g ftp-deploy
+        ftp-deploy --server 194.39.65.17 --user devpspa1 --password ~@KnCwYddcpro547 --local-dir . --remote-dir /httpdocs
