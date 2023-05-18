@@ -1,4 +1,4 @@
-name: Bitrix Project CI
+name: Bitrix CI
 
 on:
   push:
@@ -8,35 +8,44 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.5.0
-        with:
-          node-version: '16.x'
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'  # Версия PHP, используемая на вашем сервере Битрикс
+        extensions: |
+          bcmath
+          mysqli
+          curl
+          
+    - name: Install dependencies
+      run: composer install --no-interaction --prefer-dist
 
-      - name: Install Composer
-        run: |
-          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-          php composer-setup.php --filename=composer --install-dir=/usr/local/bin
-          php -r "unlink('composer-setup.php');"
+    - name: Configure Bitrix environment
+      run: cp bitrix/.settings.php.example bitrix/.settings.php
 
-      - name: Install Composer dependencies
-        run: composer install --no-dev --optimize-autoloader
+    - name: Configure Bitrix database
+      run: cp bitrix/.settings_extra.php.example bitrix/.settings_extra.php
 
-      - name: Copy Bitrix settings
-        run: cp -R .settings.php.settings.php
+    - name: Build project
+      run: |
+        php -f bitrix/modules/main/tools/build_cache.php
+        php -f update/update.php
 
-      - name: Copy Bitrix configuration
-        run: cp -R bitrix/.settings_extra.php.settings_extra.php
+    - name: Deploy project
+      run: |
+        rsync -avz --exclude 'bitrix/php_interface/dbconn.php' --exclude 'bitrix/managed_cache/' --exclude 'bitrix/cache/' --exclude 'upload/' ./ user@your-server:/path/to/destination/
 
-      - name: Set up Bitrix environment
-        run: php -f bitrix/modules/main/tools/fix_kernel.php --ts=2015-07-01T00:00:00
 
-      - name: Run Bitrix unit tests
-        run: php -f bitrix/phpunit.php --verbose
+    - name: Run tests
+      run: |
+        phpunit /path/to/tests/
 
-      # Add any other necessary steps for your project here
+    - name: Clear cache
+      run: |
+       rm -rf /path/to/bitrix/cache/
+       rm -rf /path/to/bitrix/managed_cache/
