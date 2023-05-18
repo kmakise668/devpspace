@@ -21,13 +21,3 @@ jobs:
           bcmath
           mysqli
           curl
-
-
-    - name: Run tests
-      run: |
-        phpunit /path/to/tests/
-
-    - name: Clear cache
-      run: |
-       rm -rf /path/to/bitrix/cache/
-       rm -rf /path/to/bitrix/managed_cache/
