@@ -22,7 +22,7 @@ jobs:
       run: npm i  # Или npm install, в зависимости от вашего проекта
 
     - name: Build project
-      run: npm run prod  # Или другая команда для сборки вашего шаблона с помощью webpack
+      run: npm run prod --prefix local/templates/main 
 
     - name: Copy local folder to temporary location
       run: cp -r local/templates/main /tmp/local_templates_main
