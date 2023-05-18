@@ -1,0 +1,23 @@
+name: Bitrix CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'  # Версия PHP, используемая на вашем сервере Битрикс
+        extensions: |
+          bcmath
+          mysqli
+          curl
