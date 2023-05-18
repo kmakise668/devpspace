@@ -16,14 +16,22 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Версия Node.js, необходимая для сборки вашего шаблона
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build project
+      run: npm run prod --prefix local/templates/main
 
     - name: Push changes to GitHub
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.DEVP_TOKEN }}
 
+    - name: Install ftp-deploy
+      run: npm install -g ftp-deploy
+
     - name: Deploy to Hosting
       run: |
-        npm install -g ftp-deploy
         ftp-deploy --server 194.39.65.17 --user devpspa1 --password ~@KnCwYddcpro547 --local-dir . --remote-dir /httpdocs
