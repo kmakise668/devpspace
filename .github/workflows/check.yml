@@ -48,7 +48,6 @@ jobs:
       with:
         github_token: ${{ secrets.DEVP_TOKEN }}
 
-
     - name: Deploy to Hosting
       run: |
         # Ваши команды для развертывания на хостинге
