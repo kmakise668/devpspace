@@ -23,5 +23,5 @@ jobs:
 
     - name: Deploy to Hosting
       run: |
-        npm install ftp-deploy
-        npx ftp-deploy --server 194.39.65.17 --user devpspa1 --password ~@KnCwYddcpro547 --local-dir . --remote-dir /httpdocs
+        node -e "const FtpDeploy = require('ftp-deploy'); const ftpDeploy = new FtpDeploy(); ftpDeploy.deploy({ server: '194.39.65.17', username: 'devpspa1', password: '~@KnCwYddcpro547', localRoot: '.', remoteRoot: '/httpdocs', include: ['*','**/*'] })"
+
