@@ -26,7 +26,6 @@
 
 # dirs & files
 /bower_components/
-/node_modules/
 /nbproject/
 /cache/
 /phpMyAdmin-*
