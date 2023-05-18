@@ -20,6 +20,9 @@ jobs:
 
     - name: Install dependencies
       run: npm i  # Или npm install, в зависимости от вашего проекта
+      
+    - name: Install webpack
+      run: npm install webpack
 
     - name: Build project
       run: npm run prod --prefix local/templates/main 
