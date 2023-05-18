@@ -25,7 +25,7 @@ jobs:
       run: npm install --global webpack webpack-merge vue-loader
 
     - name: Build project
-      run: npm run prod --prefix local/templates/main 
+      run: npm run dev --prefix local/templates/main 
 
     - name: Copy local folder to temporary location
       run: cp -r local/templates/main /tmp/local_templates_main
