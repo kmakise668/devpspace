@@ -21,13 +21,6 @@ jobs:
           bcmath
           mysqli
           curl
-          
-
-
-
-    - name: Deploy project
-      run: |
-        rsync -avz --exclude 'bitrix/php_interface/dbconn.php' --exclude 'bitrix/managed_cache/' --exclude 'bitrix/cache/' --exclude 'upload/' ./ user@your-server:/path/to/destination/
 
 
     - name: Run tests
