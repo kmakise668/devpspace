@@ -50,4 +50,3 @@ jobs:
 
     - name: Deploy to Hosting
       run: |
-        # Ваши команды для развертывания на хостинге
