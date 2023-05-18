@@ -1,12 +1,23 @@
 {
   "assetsByChunkName": {
     "custom": [
+<<<<<<< HEAD
       "custom.a57beb2c06faffb1276a.css",
       "custom.a57beb2c06faffb1276a.js"
     ],
     "vendor": [
       "vendor.564c27a03773a72b35fd.css",
       "vendor.564c27a03773a72b35fd.js"
+=======
+      "custom.70cc0c444e7fac167977.css",
+      "custom.70cc0c444e7fac167977.js",
+      "custom.70cc0c444e7fac167977.js.map"
+    ],
+    "vendor": [
+      "vendor.970f6299beb8f426856f.css",
+      "vendor.970f6299beb8f426856f.js",
+      "vendor.970f6299beb8f426856f.js.map"
+>>>>>>> f8e370cc3dc2f2f2398b44317093f9f191c7bcf5
     ]
   }
 }
