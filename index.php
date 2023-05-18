@@ -57,7 +57,7 @@ $APPLICATION->SetTitle("Каталог товаров из 1C:Предприят
 	)
 ); ?>
 
-<h2>Видео-новости</h2>
+<h2>Видео-новост и</h2>
 
 <? $APPLICATION->IncludeComponent(
 	"bitrix:player",
