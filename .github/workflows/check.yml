@@ -23,16 +23,7 @@ jobs:
           curl
           
 
-    - name: Configure Bitrix environment
-      run: cp bitrix/.settings.php.example bitrix/.settings.php
 
-    - name: Configure Bitrix database
-      run: cp bitrix/.settings_extra.php.example bitrix/.settings_extra.php
-
-    - name: Build project
-      run: |
-        php -f bitrix/modules/main/tools/build_cache.php
-        php -f update/update.php
 
     - name: Deploy project
       run: |
