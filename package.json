@@ -1,8 +1,0 @@
-{
-  "name": "devpspace",
-  "version": "1.0.0",
-  "description": "My Devpspace Project",
-  "dependencies": {
-    "ftp-deploy": "^2.4.4"
-  }
-}
