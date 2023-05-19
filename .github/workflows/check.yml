@@ -22,4 +22,5 @@ jobs:
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           ftp_ssl_allow: false
+          remote_dir: "/httpdocs"
           changed_files: ${{ steps.check_changes.outputs.changed_files }}
