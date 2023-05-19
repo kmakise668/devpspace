@@ -58,6 +58,7 @@ $APPLICATION->SetTitle("Каталог товаров из 1C:Предприят
 ); ?>
 
 <h2>Видео-новости</h2>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, aliquid necessitatibus officia quidem porro atque quia labore facilis doloremque minima et eius possimus! Fuga eius neque cum culpa veritatis est?</p>
 
 <? $APPLICATION->IncludeComponent(
 	"bitrix:player",
