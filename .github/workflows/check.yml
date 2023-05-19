@@ -1,27 +1,29 @@
-name: Deploy to Hosting
-
+name: CI -> Deploy to My website
 on:
   push:
-    branches:
-      - main
-
+    branches: [ main ]
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Deploy to Hosting
-      run: |
-        node -e "const FtpDeploy = require('ftp-deploy'); const ftpDeploy = new FtpDeploy(); ftpDeploy.deploy({ server: 'srv-bitrix02.ps.kz', username: 'devpspa1', password: 'C4d7_yv#Hx0Edqub', localRoot: '.', remoteRoot: '/httpdocs', include: ['*','**/*'] })"
-
+      - uses: actions/checkout@v2
+      # Here is the deployment action
+      - name: Upload from public_html via FTP
+        uses: airvzxf/ftp-deployment-action@latest
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local_dir: "./httpdocs"
+          remote_dir: "/www/sub-domain/games/myself"
+          delete: "true"
+          max_retries: "7"
+          no_symlinks: "false"
+          ftp_ssl_allow: "true"
+          ftp_use_feat: "true"
+          ftp_nop_interval: "9"
+          net_max_retries: "0"
+          net_persist_retries: "11"
+          net_timeout: "13s"
+          dns_max_retries: "17"
+          dns_fatal_timeout: "never"
