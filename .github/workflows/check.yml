@@ -15,7 +15,7 @@ jobs:
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local_dir: "./httpdocs"
-          remote_dir: "/www/sub-domain/games/myself"
+          remote_dir: "/"
           delete: "true"
           max_retries: "7"
           no_symlinks: "false"
