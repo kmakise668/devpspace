@@ -15,7 +15,7 @@ jobs:
         run: |
           git fetch
           CHANGED_FILES=$(git diff --name-only HEAD $(git merge-base HEAD origin/main))
-          echo "::set-output name=changed_files::$CHANGED_FILES"
+          echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
       
       - name: Upload changed files via FTP
         uses: airvzxf/ftp-deployment-action@master
