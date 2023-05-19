@@ -21,7 +21,7 @@ $APPLICATION->SetTitle("Каталог товаров из 1C:Предприят
 ); ?>
 <hr />
 <h2></h2>
-<h2>Новости новости</h2>
+<h2>Новости новости2</h2>
 <h2></h2>
 <? $APPLICATION->IncludeComponent(
 	"bitrix:catalog.top",
