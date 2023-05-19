@@ -1,29 +1,17 @@
-name: Deploy to Hosting
-
+name: CI -> Deploy to My website
 on:
   push:
-    branches:
-      - main
-
+    branches: [main]
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
- 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'  # Версия Node.js, необходимая для сборки вашего шаблона
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Push changes to GitHub
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.DEVP_TOKEN }}
-
-
+      - uses: actions/checkout@v2
+      # Here is the deployment action
+      - name: Upload from public_html via FTP
+        uses: airvzxf/ftp-deployment-action@latest
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          ftp_ssl_allow: false
