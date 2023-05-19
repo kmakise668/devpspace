@@ -23,5 +23,5 @@ jobs:
 
     - name: Deploy to Hosting
       run: |
-        node -e "const FtpDeploy = require('ftp-deploy'); const ftpDeploy = new FtpDeploy(); ftpDeploy.deploy({ server: '194.39.65.17', username: 'devpspa1', password: '~@KnCwYddcpro547', localRoot: '.', remoteRoot: '/httpdocs', include: ['*','**/*'] })"
+        node -e "const FtpDeploy = require('ftp-deploy'); const ftpDeploy = new FtpDeploy(); ftpDeploy.deploy({ server: 'srv-bitrix02.ps.kz', username: 'devpspa1', password: 'C4d7_yv#Hx0Edqub', localRoot: '.', remoteRoot: '/httpdocs', include: ['*','**/*'] })"
 
