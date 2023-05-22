@@ -16,14 +16,19 @@ $APPLICATION->SetTitle("Каталог товаров из 1C:Предприят
 		"COUNT_ELEMENTS" => "Y",
 		"DISPLAY_PANEL" => "N",
 		"CACHE_TYPE" => "A", 
-		"CACHE_TIME" => "3600"
+		"CACHE_TIME" => "3600"   
 	)
 ); ?>
 <hr />
 <h2>vEdit personal access token (classic)</h2>     
-<button class="btn">dsvsdvs</button>
+<button class="btn">dsvsdvs</button>   
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut a amet, in magni repudiandae eaque! Sapiente id aspernatur incidunt dolores cum dolor iure maxime, a in consequuntur accusantium delectus soluta, sequi dicta officiis, ipsum at optio ducimus sint voluptatem praesentium nihil. Suscipit dignissimos quas, libero quam officia odio animi culpa ex maxime veritatis, inventore quos nemo placeat quo deleniti vitae illum perspiciatis! Modi sed quasi culpa odio expedita recusandae odit blanditiis saepe soluta aspernatur, possimus molestias reprehenderit voluptate tenetur cum natus quidem, quas nemo voluptas totam sequi labore. Nobis iusto cupiditate eaque ipsam inventore blanditiis esse aut beatae. Earum ipsam doloremque omnis consectetur soluta eum aliquid sint delectus molestias! Modi corporis ullam, nisi nihil esse fuga consequuntur. Minima mollitia incidunt, labore, facilis iste tenetur sint numquam doloremque, eaque corrupti repellat! Minus, accusamus quia tempore commodi suscipit amet omnis voluptate ea! Nihil eaque corrupti molestias rerum deleniti culpa cumque id odit?</p>
 <input type="text" placeholder="lorem ipsum2">
+<input type="text" placeholder="lorem ipsum2">
+<input type="text" placeholder="lorem ipsum2">
+<input type="text" placeholder="lorem ipsum2">
+<input type="text" placeholder="lorem ipsum2">
+<input type="text" placeholder="lorem ipsum2">   
 <input type="text" placeholder="lorem ipsum2">
 <input type="text" placeholder="lorem ipsum2">
 <? $APPLICATION->IncludeComponent(
@@ -99,6 +104,7 @@ $APPLICATION->SetTitle("Каталог товаров из 1C:Предприят
 
 <!-- -->
 <h2>Новые фотографии</h2>
+<h2>Новые фотографии</h2>
 <? $APPLICATION->IncludeComponent(
 	"bitrix:photogallery.detail.list",
 	".default",
@@ -117,7 +123,7 @@ $APPLICATION->SetTitle("Каталог товаров из 1C:Предприят
 		"DETAIL_SLIDE_SHOW_URL" => "/content/gallery/#USER_ALIAS#/#SECTION_ID#/#ELEMENT_ID#/slide_show/",
 		"SEARCH_URL" => "/content/gallery/search/",
 		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "3600",
+		"CACHE_TIME" => "3600",  
 		"PAGE_NAVIGATION_TEMPLATE" => "",
 		"USE_PERMISSIONS" => "N",
 		"GROUP_PERMISSIONS" => array(0 => "1", 1 => "",),
