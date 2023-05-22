@@ -21,6 +21,7 @@ $APPLICATION->SetTitle("Каталог товаров из 1C:Предприят
 ); ?>
 <hr />
 <h2>vEdit personal access token (classic)</h2>
+<button class="btn">dsvsdvs</button>
 
 <? $APPLICATION->IncludeComponent(
 	"bitrix:catalog.top",
