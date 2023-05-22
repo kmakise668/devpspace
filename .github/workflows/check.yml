@@ -12,7 +12,7 @@ jobs:
         id: check_changes
         run: |
           git fetch
-          CHANGED_FILES=$(git diff --name-only HEAD $(git merge-base HEAD origin/main))
+          CHANGED_FILES=$(git diff --name-only HEAD origin/main)
           echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
 
       - name: Upload changed files via FTP
