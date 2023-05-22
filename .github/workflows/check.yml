@@ -7,11 +7,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # Here is the deployment action
-      - name: Upload from public_html via FTP
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git fetch
+          CHANGED_FILES=$(git diff --name-only HEAD $(git merge-base HEAD origin/main))
+          echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+
+      - name: Upload changed files via FTP
         uses: airvzxf/ftp-deployment-action@latest
         with:
           server: ${{ secrets.FTP_SERVER }}
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           ftp_ssl_allow: false
+          remote_dir: "/httpdocs"
+          changed_files: ${{ env.CHANGED_FILES }}
