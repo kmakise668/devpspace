@@ -60,3 +60,7 @@
 
     <? $APPLICATION->ShowPanel(); ?>
     <h1><span>cdcdcd</span>cdcdcd</h1>
+    <h1><span>cdcdcd</span>cdcdcd</h1>
+    <h1><span>cdcdcd</span>cdcdcd</h1>
+    <h1><span>cdcdcd</span>cdcdcd</h1>
+    <h1><span>cdcdcd</span>cdcdcd</h1>
