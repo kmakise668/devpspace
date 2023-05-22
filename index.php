@@ -22,6 +22,9 @@ $APPLICATION->SetTitle("Каталог товаров из 1C:Предприят
 <hr />
 <h2>vEdit personal access token (classic)</h2>     
 <button class="btn">dsvsdvs</button>   
+<button class="btn">dsvsdvs</button>   
+<button class="btn">dsvsdvs</button>   
+<button class="btn">dsvsdvs</button>   
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut a amet, in magni repudiandae eaque! Sapiente id aspernatur incidunt dolores cum dolor iure maxime, a in consequuntur accusantium delectus soluta, sequi dicta officiis, ipsum at optio ducimus sint voluptatem praesentium nihil. Suscipit dignissimos quas, libero quam officia odio animi culpa ex maxime veritatis, inventore quos nemo placeat quo deleniti vitae illum perspiciatis! Modi sed quasi culpa odio expedita recusandae odit blanditiis saepe soluta aspernatur, possimus molestias reprehenderit voluptate tenetur cum natus quidem, quas nemo voluptas totam sequi labore. Nobis iusto cupiditate eaque ipsam inventore blanditiis esse aut beatae. Earum ipsam doloremque omnis consectetur soluta eum aliquid sint delectus molestias! Modi corporis ullam, nisi nihil esse fuga consequuntur. Minima mollitia incidunt, labore, facilis iste tenetur sint numquam doloremque, eaque corrupti repellat! Minus, accusamus quia tempore commodi suscipit amet omnis voluptate ea! Nihil eaque corrupti molestias rerum deleniti culpa cumque id odit?</p>
 <input type="text" placeholder="lorem ipsum2">
 <input type="text" placeholder="lorem ipsum2">
