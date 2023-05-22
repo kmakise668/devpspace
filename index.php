@@ -21,7 +21,7 @@ $APPLICATION->SetTitle("Каталог товаров из 1C:Предприят
 ); ?>
 <hr />
 <h2></h2>
-<h2>Новости новости</h2>
+<h2>vEdit personal access token (classic)</h2>
 <h2></h2>
 <? $APPLICATION->IncludeComponent(
 	"bitrix:catalog.top",
@@ -57,12 +57,6 @@ $APPLICATION->SetTitle("Каталог товаров из 1C:Предприят
 	)
 ); ?>
 
-<<<<<<< HEAD
-<h2>Видео-новости</h2>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, aliquid necessitatibus officia quidem porro atque quia labore facilis doloremque minima et eius possimus! Fuga eius neque cum culpa veritatis est?</p>
-=======
-<h2>Видео-новост и</h2>
->>>>>>> 2e571e32ad92f7603ed556c597e03c203d255914
 
 <? $APPLICATION->IncludeComponent(
 	"bitrix:player",
