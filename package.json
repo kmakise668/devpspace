@@ -20,6 +20,11 @@
     },
     "dependencies": {
         "basic-ftp": "^5.0.3",
-        "chokidar": "^3.5.3"
+        "chokidar": "^3.5.3",
+        "ignore": "^5.2.4"
+    },
+    "scripts": {
+        "start": "concurrently \"node webpack.js\" \"npm run dev --prefix local/templates/main\""
     }
+
 }

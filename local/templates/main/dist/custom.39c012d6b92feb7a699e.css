@@ -10010,8 +10010,7 @@ a.text-dark:hover {
 
 
 /*# sourceMappingURL=bootstrap.min.css.map */
-body {
-    background-color: #fefefe;
+html body {
     min-height: 100vh;
-    color: #000;
+    color: #303030;
 }

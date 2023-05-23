@@ -27,10 +27,12 @@ function watchPhpFiles() {
         ignored: /node_modules/,
         persistent: true,
         ignoreInitial: true,
+        awaitWriteFinish: true, // Добавляем параметр awaitWriteFinish для отслеживания завершения записи файла
     });
 
+
     watcher.on('all', (event, filePath) => {
-        if (event !== 'addDir' && path.extname(filePath) === '.php') {
+        if (event !== 'addDir') {
             const remotePath = '/httpdocs/' + path.relative('.', filePath);
             uploadFile(filePath, remotePath);
         }
