@@ -65,3 +65,4 @@ bitrix/templates/learning/
 
 local/templates/main/node_modules
 local/templates/main/package-lock.json
+node_modules
