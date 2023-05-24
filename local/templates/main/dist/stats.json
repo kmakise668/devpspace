@@ -1,12 +1,12 @@
 {
   "assetsByChunkName": {
     "custom": [
-      "custom.39c012d6b92feb7a699e.css",
-      "custom.39c012d6b92feb7a699e.js"
+      "custom.2c8554189908ce787657.css",
+      "custom.2c8554189908ce787657.js"
     ],
     "vendor": [
-      "vendor.4df9cffe8f5c41872080.css",
-      "vendor.4df9cffe8f5c41872080.js"
+      "vendor.564c27a03773a72b35fd.css",
+      "vendor.564c27a03773a72b35fd.js"
     ]
   }
 }

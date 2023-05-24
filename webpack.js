@@ -21,7 +21,7 @@ async function uploadFile(localPath, remotePath) {
     }
 }
 
-// Отслеживание изменений файлов .php
+
 function watchPhpFiles() {
     const watcher = chokidar.watch('.', {
         ignored: /node_modules/,

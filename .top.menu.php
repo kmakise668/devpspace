@@ -1,46 +1,17 @@
 <?
-$aMenuLinks = Array(
-	Array(
-		"Главная", 
-		"/", 
-		Array(), 
-		Array(), 
-		"" 
+$aMenuLinks = array(
+	array(
+		"Главная",
+		"/",
+		array(),
+		array(),
+		""
 	),
-	Array(
-		"Профиль", 
-		"/personal/", 
-		Array(), 
-		Array(), 
-		"" 
+	array(
+		"О нас",
+		"/about.php",
+		array(),
+		array(),
+		""
 	),
-	Array(
-		"Контент", 
-		"/content/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Магазин", 
-		"/e-store/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Общение", 
-		"/communication/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Типовые примеры", 
-		"/examples/", 
-		Array(), 
-		Array(), 
-		"" 
-	)
 );
-?>
