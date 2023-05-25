@@ -1,61 +1,74 @@
-<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
-<? $isMainPage = $APPLICATION->GetCurPage(false) == SITE_DIR; ?>
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="<?=LANGUAGE_ID?>">
 <head>
-    <?
+    <title><?php $APPLICATION->ShowTitle()?></title>
 
-    use Bitrix\Main\Application;
-    use Bitrix\Main\Page\Asset;
-    use Bitrix\Main\Localization\Loc;
+    <?php $APPLICATION->ShowHead()?>
 
-    Loc::loadMessages(__FILE__);
+    <?php CJSCore::Init('jquery')?>
+
+    <?php
+        $assetManager = new Local\Util\Assets();
     ?>
 
+    <link rel="stylesheet" href="<?= $assetManager->getEntry('global.css') ?>">
 
-
-    <?
-    $statsFilePath = $_SERVER['DOCUMENT_ROOT'] . '/local/templates/main/dist/stats.json';
-    $statsJson = file_get_contents($statsFilePath);
-
-    // Декодируем JSON в массив
-    $statsData = json_decode($statsJson, true);
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        $errorMessage = 'Ошибка декодирования JSON: ' . json_last_error_msg();
-        error_log($errorMessage);
-        exit;
-    }
-    $assetsPath = SITE_TEMPLATE_PATH . '/dist/';
-
-    $assetsByChunkName = $statsData['assetsByChunkName'];
-
-    foreach ($assetsByChunkName as $chunkName => $files) {
-        foreach ($files as $file) {
-            $filePath = $assetsPath . $file;
-
-            if (pathinfo($file, PATHINFO_EXTENSION) === 'css') {
-                Asset::getInstance()->addCss($filePath);
-            } elseif (pathinfo($file, PATHINFO_EXTENSION) === 'js') {
-                Asset::getInstance()->addJs($filePath);
-            }
-        }
-    }
-    ?>
-
-
-    <meta charset="utf-8" />
-    <title><? $APPLICATION->ShowTitle() ?></title>
-    <? $APPLICATION->ShowHead(); ?>
-    <!-- partial:parts/_head.html -->
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 </head>
+<body class="page page_<?=LANGUAGE_ID?> page_<?php $APPLICATION->ShowProperty('page_type', 'secondary')?>">
+<?php $APPLICATION->ShowPanel()?>
 
+<div class="page__top">
+    <header class="header">
+        <div class="header__inner">
 
+            <div class="header__logo">
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    Array(
+                        "AREA_FILE_SHOW" => "file",
+                        "EDIT_TEMPLATE" => "",
+                        "PATH" => "/__include__/logo.php"
+                    )
+                );?>
+            </div>
 
-<body class="<?= $APPLICATION->ShowProperty('CLASS') ?>">
+            <div class="header__nav">
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:menu",
+                    "top",
+                    array(
+                        "ALLOW_MULTI_SELECT" => "N",
+                        "CHILD_MENU_TYPE" => "left",
+                        "DELAY" => "N",
+                        "MAX_LEVEL" => "1",
+                        "MENU_CACHE_GET_VARS" => array(
+                        ),
+                        "MENU_CACHE_TIME" => "3600",
+                        "MENU_CACHE_TYPE" => "N",
+                        "MENU_CACHE_USE_GROUPS" => "Y",
+                        "ROOT_MENU_TYPE" => "top",
+                        "USE_EXT" => "N",
+                    ),
+                    false
+                );?>
+            </div>
+        </div>
+    </header>
 
-    <? $APPLICATION->ShowPanel(); ?>
+    <main class="page__middle">
+
+        <section class="page__content">
+            <?php if ($APPLICATION->GetCurPage(false) != SITE_DIR) :?>
+				<?$APPLICATION->IncludeComponent(
+					"bitrix:breadcrumb",
+					"",
+					Array(
+						"PATH" => "",
+						"SITE_ID" => "s1",
+						"START_FROM" => "0"
+					)
+				);?>
+                <h1 class="page__title"><?php $APPLICATION->ShowTitle(false)?></h1>
+            <?php endif;?>
