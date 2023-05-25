@@ -22,7 +22,7 @@ async function uploadFile(localPath, remotePath) {
 }
 
 
-function watchPhpFiles() {
+function watchFiles() {
     const watcher = chokidar.watch('.', {
         ignored: /node_modules/,
         persistent: true,
@@ -40,4 +40,4 @@ function watchPhpFiles() {
 }
 
 // Запуск отслеживания файлов
-watchPhpFiles();
+watchFiles();
