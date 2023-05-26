@@ -11,11 +11,11 @@
 // Твиг не успевает зарегистрироваться
 // необходимо это действие повтроить еще раз:
 
-maximasterRegisterTwigTemplateEngine();
+// maximasterRegisterTwigTemplateEngine();
 
-Arrilot\BitrixModels\ServiceProvider::register();
-Arrilot\BitrixModels\ServiceProvider::registerEloquent();
+// Arrilot\BitrixModels\ServiceProvider::register();
+// Arrilot\BitrixModels\ServiceProvider::registerEloquent();
 
-Bex\Monolog\MonologAdapter::loadConfiguration();
+// Bex\Monolog\MonologAdapter::loadConfiguration();
 
 include_once 'events.php';
