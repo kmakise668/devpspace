@@ -2,78 +2,45 @@
 
 namespace Local\Util;
 
-/**
- * Class Assets
- * @package Local\Util
- *
- * Хелпер для работы с манифест-файлом Вебпака
- */
 class Assets
 {
-    /**
-     * @var string
-     */
     private $base;
-    /**
-     * @var string
-     */
-    private $manifestFile;
-    /**
-     * @var array
-     */
     private $manifest;
 
-    /**
-     * Assets constructor.
-     *
-     * @param string $base         Расположение директории ассетов относительно
-     *                             DOCUMENT_ROOT.
-     * @param string $manifestFile Имя манифест-файла.
-     * @throws \Exception Стандартное исключение.
-     */
     public function __construct(string $base = 'local/build/', string $manifestFile = 'manifest.json')
     {
         $this->base = $base;
-        $this->manifestFile = $manifestFile;
-
-        $this->loadManifest();
+        $this->loadManifest($manifestFile);
     }
 
-    /**
-     * Генерирует массив ассетов на основе файла манифеста.
-     *
-     * @return void
-     * @throws \Exception Стандартное исключение.
-     */
-    private function loadManifest()
+    private function loadManifest(string $manifestFile)
     {
-        $manifest = json_decode(file_get_contents(
-            $_SERVER['DOCUMENT_ROOT'] . '/' . $this->base . $this->manifestFile
-        ), true);
+        $manifestPath = $_SERVER['DOCUMENT_ROOT'] . '/' . $this->base . $manifestFile;
 
-        if (! (bool) $manifest) {
+        if (!file_exists($manifestPath)) {
             throw new \Exception('Manifest file not found!');
         }
 
-        $this->manifest = $manifest;
+        $this->manifest = json_decode(file_get_contents($manifestPath), true);
     }
 
-    /**
-     * Получить путь до файла-ассета по его имени
-     *
-     * @param string $entryName Имя файла-ассета.
-     * @return string Путь до ассета.
-     * @throws \Exception Стандартное исключение.
-     */
     public function getEntry(string $entryName)
     {
         $entryPath = $this->base . $entryName;
-        $entry = $this->manifest[ $entryPath ];
 
-        if (is_null($entry)) {
-            throw new \Exception('Entry `' . $entryPath .'` not found in manifest file!');
+        if (!isset($this->manifest[$entryPath])) {
+            throw new \Exception('Entry `' . $entryPath . '` not found in manifest file!');
         }
 
-        return $entry;
+        return $this->manifest[$entryPath];
     }
 }
+
+// Создаем экземпляр класса Assets
+$assetManager = new \Local\Util\Assets();
+
+// Получаем путь к стилям
+$cssPath = $assetManager->getEntry('global.css');
+
+// Получаем путь к скрипту
+$jsPath = $assetManager->getEntry('main.js');
