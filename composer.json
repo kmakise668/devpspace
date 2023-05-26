@@ -19,11 +19,11 @@
     },
     "scripts": {
         "lint:php": "php ./vendor/bin/phpcs  --encoding=utf-8 --ignore=./local/components/*/templates/*  --standard=ruleset.xml --extensions=php  ./local/classes ./local/components",
-        "fix:php":  "php ./vendor/bin/phpcbf --encoding=utf-8 --ignore=./local/components/*/templates/*  --standard=ruleset.xml --extensions=php  ./local/classes ./local/components"
+        "fix:php": "php ./vendor/bin/phpcbf --encoding=utf-8 --ignore=./local/components/*/templates/*  --standard=ruleset.xml --extensions=php  ./local/classes ./local/components"
     },
 
     "autoload": {
-        "psr-4": {"Local\\" : "local/classes/"}
+        "psr-4": { "Local\\": "local/classes/" }
     },
 
     "extra": {
@@ -31,6 +31,12 @@
             "./bitrix/modules/{$name}/": ["type:bitrix-d7-module", "type:bitrix-module"],
             "./bitrix/components/{$name}/": ["type:bitrix-d7-component", "type:bitrix-component"],
             "./bitrix/templates/{$name}/": ["type:bitrix-d7-template", "type:bitrix-theme"]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true,
+            "composer/installers": true
         }
     }
 }
