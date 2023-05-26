@@ -9,12 +9,7 @@
     <?php CJSCore::Init('jquery') ?>
 
     <?php
-
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/local/classes/Util/Assets.php');
-
-    use Local\Util\Assets;
-
-    $assetManager = new Assets();
+    $assetManager = new Local\Util\Assets();
     ?>
 
     <link rel="stylesheet" href="<?= $assetManager->getEntry('global.css') ?>">
