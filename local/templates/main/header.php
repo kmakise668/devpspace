@@ -9,7 +9,8 @@
     <?php CJSCore::Init('jquery') ?>
 
     <?php
-    $assetManager = new Local\Util\Assets();
+  $assetManager = new \Local\Util\Assets($_SERVER['DOCUMENT_ROOT'] . '/local/build/', 'manifest.json');
+
     ?>
 
     <link rel="stylesheet" href="<?= $assetManager->getEntry('global.css') ?>">

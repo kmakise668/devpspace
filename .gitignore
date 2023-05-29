@@ -6,7 +6,7 @@
 /bitrix
 /upload
 
-# /local/build
+/local/build
 
 *.log
 
