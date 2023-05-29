@@ -2,16 +2,16 @@
   "entrypoints": {
     "main": {
       "js": [
-        "/local/build/runtime.829188d0.js",
-        "/local/build/main.829188d0.js"
+        "/local/build/runtime.67b465b7.js",
+        "/local/build/main.67b465b7.js"
       ]
     },
     "global": {
       "js": [
-        "/local/build/runtime.829188d0.js"
+        "/local/build/runtime.67b465b7.js"
       ],
       "css": [
-        "/local/build/global.6a698629.css"
+        "/local/build/global.0b5c3138.css"
       ]
     }
   }
