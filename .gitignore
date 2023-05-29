@@ -6,11 +6,9 @@
 /bitrix
 /upload
 
-/local/build
 
 *.log
 
 hosts.yml
 
 # .env
-/local/build/
