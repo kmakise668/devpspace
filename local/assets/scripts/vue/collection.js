@@ -10,6 +10,8 @@
  *
  */
 
-export default {
+import DemoApp from './components/DemoApp.vue';
 
+export default {
+    DemoApp,
 };

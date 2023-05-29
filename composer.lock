@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93a6a77b419cac9e11c914d20f59ca6f",
+    "content-hash": "902be80af326e3f838424f47699b23b3",
     "packages": [
         {
             "name": "arrilot/bitrix-migrations",

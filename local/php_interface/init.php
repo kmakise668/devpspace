@@ -1,5 +1,5 @@
-<?php
 
+<?php
 // composer autoload и dotenv подключаются в файлах конфигурации ядра
 // bitrix/.settings.php и bitrix/php_interface/dbconn.php
 // которые в свою очередь можно обновить, отредактировав данные в директории /environments/

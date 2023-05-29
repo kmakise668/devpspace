@@ -1,8 +1,12 @@
 <?
-require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 $APPLICATION->SetTitle("Главная");
 ?>
 
-dvsdfvdfbdfbdfbf<?
-require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');
-?>
+
+
+
+<div class="vue-component" data-component="DemoApp" data-initial='{"test": "data"}'></div>
+
+
+<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
