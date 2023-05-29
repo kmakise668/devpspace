@@ -9,11 +9,11 @@
 
 <script>
 export default {
-    data() {
-        return {
-            hello: 'World',
-        };
-    },
-    props: ['initial'],
+  data() {
+    return {
+      hello: 'World',
+    };
+  },
+  props: ['initial'],
 };
 </script>
